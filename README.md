@@ -1,11 +1,11 @@
-This repository presents the output data and the figures generated from it, and presented in
+This repository contains the figures generated from the output data presented in
 the paper "Combining land data assimilation and hydro-economic optimization to analyze water allocation 
 in politically unstable transboundary river basins"
-By C. Rouge, A. Tilmant, B. Zaitchik, A. Dezfuli and M. Salman
+By C. Rougé, A. Tilmant, B. Zaitchik, A. Dezfuli and M. Salman
 
 Files:
 
-=> Output data:
+=> Output data is to be made available shortly.
 
 te_res.mat 
 contains all the results data used in this analysis
