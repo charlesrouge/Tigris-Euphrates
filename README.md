@@ -8,10 +8,12 @@ Files:
 => Output data is to be made available on an appropriate repository by the end of September 2017.
 
 te_res.mat 
-contains all the results data used in this analysis
+contains all the results data used in this analysis, accessible at
+https://drive.google.com/file/d/0BypJKT7cDrTfaDJvVG1vcG1Xa00/view?usp=sharing
 
 te_no_irr.mat 
-contains all the results for a SDDP run with exactly the same inputs as te_res.mat, but without irrigation
+contains all the results for a SDDP run with exactly the same inputs as te_res.mat, but without irrigation, accessible at
+https://drive.google.com/file/d/0BypJKT7cDrTfWlVuSWNHakxPVkk/view?usp=sharing
 
 => Auxiliary data:
 
