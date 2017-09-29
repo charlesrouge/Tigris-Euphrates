@@ -5,7 +5,7 @@ By C. Rougé, A. Tilmant, B. Zaitchik, A. Dezfuli and M. Salman
 
 Files:
 
-=> Output data is to be made available on an appropriate repository by the end of September 2017.
+=> Output data:
 
 te_res.mat 
 contains all the results data used in this analysis, accessible at
