@@ -1,25 +1,19 @@
-This repository contains the figures generated from the output data presented in
-the paper "Combining land data assimilation and hydro-economic optimization to analyze water allocation 
-in politically unstable transboundary river basins"
-By C. Rougé, A. Tilmant, B. Zaitchik, A. Dezfuli and M. Salman
+This repository presents the output data and the figures generated from it, and presented in
+the paper "Identifying key water resource vulnerabilities in data-scarce transboundary river basins"
+By C. Rouge, A. Tilmant, B. Zaitchik, A. Dezfuli and M. Salman
 
 Files:
 
-=> Output data:
+=> Output data (MAT format):
 
-te_res.mat 
-contains all the results data used in this analysis, accessible at
-https://drive.google.com/file/d/0BypJKT7cDrTfaDJvVG1vcG1Xa00/view?usp=sharing
-
-te_no_irr.mat 
-contains all the results for a SDDP run with exactly the same inputs as te_res.mat, but without irrigation, accessible at
-https://drive.google.com/file/d/0BypJKT7cDrTfWlVuSWNHakxPVkk/view?usp=sharing
+The output data used for the figures is available at LINK_TO_BE_UPDATED_Monday_April_2
+All files have a letter plus number (ex: A0) referring the the scenario described in Table 1 of the paper. The prefix "hist" indicates a re-optimization of the historical flows; otherwise, the file contains results for 1,000, 10 years monthly time-series for the basin's inflows.
+A0_no_irr.mat contains results for the no-irrigation version of scenario A0 (used for validation).
 
 => Auxiliary data:
 
 "Nominal.xlsx" contains expected (nominal) hydropower productions for a number of reservoirs in the T-E
 
-"Nodes_with_XYcoord.xlsx" contains latitude and longitude for most nodes in this analysis
 
 => Matlab files
 
