@@ -6,14 +6,13 @@ Files:
 
 => Output data (MAT format):
 
-The output data used for the figures is available at LINK_TO_BE_UPDATED_Monday_April_2
+The output data used for the figures is available at https://drive.google.com/file/d/1yRq4uZS9dlxxfpn64At2bUcjY9FNs3FM/view?usp=sharing.
 All files have a letter plus number (ex: A0) referring the the scenario described in Table 1 of the paper. The prefix "hist" indicates a re-optimization of the historical flows; otherwise, the file contains results for 1,000, 10 years monthly time-series for the basin's inflows.
 A0_no_irr.mat contains results for the no-irrigation version of scenario A0 (used for validation).
 
 => Auxiliary data:
 
 "Nominal.xlsx" contains expected (nominal) hydropower productions for a number of reservoirs in the T-E
-
 
 => Matlab files
 
