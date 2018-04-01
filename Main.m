@@ -1,83 +1,104 @@
-% A call to this file produces all the figures in paper "Combining land
-% data assimilation and hydro-economic optimization to analyze water
-% allocation in politically unstable transboundary river basins"
+% A call to this file produces all the figures in paper "Identifying key 
+% water resource vulnerabilities in data-scarce transboundary river basins"
 % By C. Rouge, A. Tilmant, B. Zaitchik, A. Dezfuli and M. Salman
 
-%% Load result structures
-load te_res
-load te_no_irr
-
 %% Which figures do you want to plot (1 plot, 0 otherwise)
+fig4 = 1;
 fig5 = 1;
 fig6 = 1;
 fig7 = 1;
 fig8 = 1;
 fig9 = 1;
-tab1 = 1;
+fig10 = 1;
 
-%% Figure 5 (both panels)
+%% Load result structures
+% baseline run A0
+load A0
+% same as baseline but without irrigation
+if fig4
+    load A0_no_irr
+end
+% scenarios A1 to A3
+if fig8 
+    load A1
+    load A2
+    load A3
+end
+% scenarios B0 to B3
+if fig9 
+    load B0
+    load B1
+    load B2
+    load B3
+end
+if fig10
+    load histA0
+    load histA1
+    load histA2
+    load histA3
+    load histB0
+    load histB1
+    load histB2
+    load histB3
+end
+
+
+%% Figure 4 (two panels)
 % Comparison of hydropower outputs (with and without irrigation)
 % with nominal (expect) productions
+if fig4
+    PowerCompare(A0,A0_no_irr);
+end
+
+
+%% Figure 5 (one panel)
+% Impacts of infrastructure development on the probability distribution of
+% annual flows at the border between Turkey and Syria on the Euphrates.
 if fig5
-    z = PowerCompare(te_res,te_no_irr);
+    BorderFlow(5,109,A0,1,500);
 end
 
-%% Table 1
-
-% Producing last year's data from te_res.mat
-tab = ResultsByCountry(te_res,10);
-if tab1
-    Results_Table
-end
-
-%% Figure 6 (panels (a) and (b))
+%% Figure 6 (four panels)
+% Average natural and altered annual and monthly flows, and associated \chi
+% variability quotients, at the border crossings (A to C in Figure 1). Red
+% lines signal  = 1, no change in variability.
 if fig6
-   % Distance to outlet
-   dist_outlet = Aux_compute_distances('Nodes_with_XYcoord.xlsx', ...
-       te_res.system,1.1,60);
-   % Water values for the Euphrates (1 is the upstream node)
-   WaterValue(te_res,1,10) % with node names
-   title('a) Euphrates')
-   WaterValue(te_res,1,10,dist_outlet) % with distances
-   title('a) Euphrates')
-   % Water values for the Tigris (6 is the upstream node)
-   WaterValue(te_res,6,10) % with node names
-   title('b) Tigris')
-   WaterValue(te_res,6,10,dist_outlet) % with distances
-   title('b) Tigris')
+    plotBorderFlows1(A0);
 end
 
-%% Figure 7 (top and bottom panels)
+%% Figure 7 (three panels)
+% Comparison of outlet flows with outflows from Tharthar Lake.
 if fig7
-    out = ['Annual power production (TWh)'];
-    % Top panel, 1-year production
-    Distribution_By_Country(tab.hydropower_production/1000,tab.name,out);
-    title('1-year production')
-    set(gca,'Xlim',[0 70])
-    % Bottom panel, 5-year annual average
-    hydropower_prod_5y = (tab.hydropower_production)/5;
-    for y =6:9
-        tab_y = ResultsByCountry(te_res,y);
-        hydropower_prod_5y = hydropower_prod_5y + tab_y.hydropower_production/5;
-    end
-    hydropower_prod_5y = hydropower_prod_5y / 1000; % Convert to TWh
-    Distribution_By_Country(hydropower_prod_5y,tab.name,out);
-    title('5-year average production')
-    set(gca,'Xlim',[0 70])
+    Outlet_Flow(A0);
 end
 
-%% Figure 8 (all 9 panels)
+%% Figure 8 (five panels)
+% Euphrates flow indicators at the Turkey-Syria border, and their 
+% sensitivity to increased irrigation in Turkey.
 if fig8
-    % Euphrates, Turkey-Syria border
-    BorderFlow(5,109,te_res,1,500);
-    % Euphrates, Syria-Iraq border
-    BorderFlow(16,109,te_res,1,500*0.58);
-    % Tigris, Turkey-Iraq border
-    BorderFlow(9,109,te_res,1);
+    plotBorderFlows2(A0,A1,A2,A3);
 end
 
-%% Figure 9 (panels (a) to (d))
+%% Figure 9 (two panels)
+% Exceedence probabilities of irrigation demand shortages in the whole 
+% Euphrates basin, under scenarios B0 to B3 (no saline water transfers). 
+% Panel a), probabilities on a given year; panel b) probabilities 
+% conditional on shortage the previous year.
 if fig9
-   Outlet_Flow(te_res);
+    plot_deficits(B0,B1,B2,B3);
 end
+
+%% Figure 10 (seven panels)
+% Results for the whole Euphrates basin, from re-optimization using the
+% cuts (benefits-to-go functions) obtained from running SDDP-YPRE in each
+% scenario defined in Table 1, with historical flows 1982-2011. Only 
+% 1987-2011 is shown to leave out the warmup period.
+if fig10
+    % panel (a)
+    EuphratesInflows(histA0.flows.lateral_inflow');
+    % the other panels
+    plot_historical(histA0,histA1,histA2,histA3,histB0,histB1,histB2,...
+        histB3)
+end
+
 

@@ -32,6 +32,7 @@ bar(x(1:9,:))
 ylabel('Annual power production (GWh)')
 legend('Expected','Simulated (no irrigation)', ...
     'Simulated (with irrigation)')
+set(gca,'Ylim',[0 10000])
 
 % Reduce the size of the axis so that all the labels fit in the figure.
 pos = get(gca,'Position');
@@ -48,7 +49,7 @@ Yl = ax(3:4);  % Y-axis limits
 t = text(Xt,Yl(1)*ones(1,length(Xt)),names(1:9,:));
 set(t,'HorizontalAlignment','Center','VerticalAlignment','top');
 
-figure('Name','Validation, panel 1')
+figure('Name','Validation, panel 2')
 colormap summer
 bar(x(10:18,:))
 ylabel('Annual power production (GWh)')
